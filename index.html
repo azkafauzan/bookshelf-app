@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bookshelf App</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://kit.fontawesome.com/d725f2fca5.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="darkness">
+      <header><h1>Bookshelf App</h1></header>
+      <main>
+        <section id="form-section">
+          <h2>Add New Book</h2>
+          <form id="form-book">
+            <input type="text" name="title" id="title" placeholder="Title" required autocomplete="off" />
+            <input type="text" name="author" id="author" placeholder="Author" required autocomplete="off" />
+            <input type="number" name="year" id="year" placeholder="Year" required autocomplete="off" min="0" />
+            <label for="is-completed">
+              <p>Completed Reading</p>
+              <input type="checkbox" name="is-complete" id="is-complete" />
+            </label>
+            <button type="submit" class="green-btn">Submit Book to Bookshelf</button>
+          </form>
+        </section>
+        <section class="bookshelf">
+          <h2>Finished Reading</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Year</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="finished-reading"></tbody>
+            <tfoot>
+              <tr>
+                <td colspan="4"></td>
+              </tr>
+            </tfoot>
+          </table>
+        </section>
+        <section class="bookshelf">
+          <h2>Not Finished Reading</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Year</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="not-finished-reading"></tbody>
+            <tfoot>
+              <tr>
+                <td colspan="4"></td>
+              </tr>
+            </tfoot>
+          </table>
+        </section>
+      </main>
+      <footer>
+        <p>Created by <a href="#">Azka Fauzan</a> | &copy 2024</p>
+      </footer>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
