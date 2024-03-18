@@ -14,9 +14,9 @@
         <section id="form-section">
           <h2>Add New Book</h2>
           <form id="form-book">
-            <input type="text" name="title" id="title" placeholder="Title" required autocomplete="off" />
-            <input type="text" name="author" id="author" placeholder="Author" required autocomplete="off" />
-            <input type="number" name="year" id="year" placeholder="Year" required autocomplete="off" min="0" />
+            <input type="text" name="title" id="title" placeholder="Title" required autocomplete="off" minlength="1" />
+            <input type="text" name="author" id="author" placeholder="Author" required autocomplete="off" minlength="1" />
+            <input type="number" name="year" id="year" placeholder="Year" required autocomplete="off" min="1" />
             <label for="is-completed">
               <p>Completed Reading</p>
               <input type="checkbox" name="is-complete" id="is-complete" />
@@ -61,6 +61,15 @@
               </tr>
             </tfoot>
           </table>
+        </section>
+        <section id="edit-book">
+          <form id="form-edit">
+            <input type="text" name="edit-title" id="edit-title" placeholder="Title" autocomplete="off" minlength="2" />
+            <input type="text" name="edit-author" id="edit-author" placeholder="Author" autocomplete="off" minlength="2" />
+            <input type="number" name="edit-year" id="edit-year" placeholder="Year" autocomplete="off" min="1" />
+            <button type="submit" class="green-btn edit-btn">Edit Book</button>
+            <button type="button" class="cancel-btn"><i class="fa-solid fa-xmark fa-2xl"></i></button>
+          </form>
         </section>
       </main>
       <footer>

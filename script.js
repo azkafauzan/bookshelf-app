@@ -7,6 +7,11 @@ const isComplete = document.querySelector("#is-complete");
 const finished = document.querySelector("#finished-reading");
 const notFinished = document.querySelector("#not-finished-reading");
 const main = document.querySelector("main");
+const editBook = document.querySelector("#edit-book");
+const formEdit = document.querySelector("#form-edit");
+const editTitle = document.querySelector("#edit-title");
+const editAuthor = document.querySelector("#edit-author");
+const editYear = document.querySelector("#edit-year");
 
 // ========== Config Local Storage ==========
 const setStorage = () => {
@@ -60,6 +65,42 @@ main.addEventListener("click", function (e) {
     notFinished.innerHTML = renderBook(false);
     renderDefault();
   }
+  // ========== Event Edit ==========
+  if (e.target.classList.contains("fa-pen-to-square")) {
+    editBook.classList.add("active");
+    storageBooks.map((book) => {
+      if (book.id === Number(id)) {
+        editTitle.value = book.title;
+        editAuthor.value = book.author;
+        editYear.value = book.year;
+      }
+    });
+    editBook.addEventListener("click", function (e) {
+      if (e.target.classList.contains("fa-xmark")) {
+        this.classList.remove("active");
+      }
+      if (e.target === editBook) {
+        this.classList.remove("active");
+      }
+      if (e.target.classList.contains("edit-btn")) {
+        this.classList.remove("active");
+      }
+      formEdit.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const newSB = storageBooks.map((book) => {
+          if (book.id === Number(id)) {
+            book.title = editTitle.value;
+            book.author = editAuthor.value;
+            book.year = editYear.value;
+          }
+          return book;
+        });
+        localStorage.setItem("books", JSON.stringify(newSB));
+        finished.innerHTML = renderBook(true);
+        notFinished.innerHTML = renderBook(false);
+      });
+    });
+  }
 });
 
 // ========== Function addBook ==========
@@ -95,6 +136,7 @@ const renderBook = (status) => {
           <td class="buttons">
             <button class="switch-btn"><i class="fa-solid fa-shuffle fa-2xl"></i></button>
             <button class="delete"><i class="fa-solid fa-trash-can fa-2xl"></i></button>
+            <button class="edit"><i class="fa-solid fa-pen-to-square fa-2xl"></i></button>
           </td>
         </tr>
       `;
